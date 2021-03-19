@@ -4,6 +4,8 @@
 * page entries. Each entry holds a string and its CRCed value accompanied with it. On the reading end, it provides a fast
 * way to search crced values. The CRC checksum is done on the lower case version of the string, and is the CRC64-ECMA.
 * 
+* See the README for the format of the text file
+*
 * Version 1.3
 * 
 */
