@@ -40,14 +40,6 @@ int64 crc(const char* str) {
 	return crc;
 }
 
-int64 crctt(const char* str) {
-	char* dup = _strdup(str);
-	_strlwr(dup);
-	int64 ret = crc(dup);
-	free(dup);
-	return ret;
-}
-
 void wint(FILE* outp, int64 val, int8 bytes) {
 	int8* buffer = (int8*)malloc(bytes);
 	if (!buffer)return;
@@ -136,7 +128,7 @@ int main(int argn, char** argv) {
 		wint(out, page->size, 4);
 		int x = 0;
 		for (size_t j = 0; j < cvector_size(page->values); j++) {
-			wint(out, crctt(page->values[j]), 8);
+			wint(out, crc(page->values[j]), 8);
 			wint(out, x, 4);
 			x += strlen(page->values[j]) + 1;
 		}
